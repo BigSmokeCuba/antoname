@@ -110,17 +110,21 @@ async def upload(ev,bot,jdb,message_edited=None):
                          i=-1
                      if uptype == 'draft':
                          filename = str(item).split('/')[-1]
-                         filesize = get_file_size(item)
+                         filesize = get_file_size(item) 
+                         text = '<b>' 
                          text = '📡 Subiendo Archivo(s)....\n\n'
                          text += '👨🏻‍💻 '+filename+'\n'
                          text += '📦Tamaño Total: '+sizeof_fmt(filefullsize)+' \n'
+                         text = '<b>'  
                          if len(files)>1:
                             text += '📚 '+str(len(files))+' Partes\n'
                          await message.edit(text)
                          itemid,data = await client.upload_file_draft(item,progress_upload,(bot,message))
+                         text = '<b>'   
                          text = '💚 Subiendo con Éxito 💚\n\n'
                          text += '👨🏻‍💻 '+filefullname+'\n'
                          text += '📦Tamaño Total: '+sizeof_fmt(filefullsize)+' \n'
+                         text = '<b>'
                          if 'url' in data:
                             buttonsadd.append(Button.url('🔗'+filename+'🔗',data['url']))
                      if uptype == 'evidencia':
